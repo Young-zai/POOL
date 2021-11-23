@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>Title</title>
+<!--引入echarts-->
+<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.min.js"></script>
+
+</head>        
+<body>
+    <div id="main" style="width: 800px; height: 600px; background-color:white"></div>
+    <script>
+        var main = echarts.init(document.getElementById("main"))
+        option = {
+  title: {
+    text: '电影票房统计',
+    subtext: 'Movie box office statistics ',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left'
+  },
+  series: [
+    {
+      name: 'Access From',
+      type: 'pie',
+      radius: '50%',
+      data:{{data|tojson}},
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};  
+
+main.setOption(option)
+    </script>
+</body>
+</html>
